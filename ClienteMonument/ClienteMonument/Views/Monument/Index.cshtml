@@ -1,0 +1,210 @@
+﻿@model IEnumerable<ClienteMonument.Models.Monument>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    //List<Monument> monumentos = ViewData["MONUMENT"] as List<Monument>;
+    List<Country> paises = ViewData["PAIS"] as List<Country>;
+    Country paisSelect = ViewData["valor"] as Country;
+    List<Monument> listaMonumentos = ViewData["MONUMENTS"] as List<Monument>;
+}
+
+@section Scripts {
+<script src="~/js/leaflet.js"></script>
+<script>
+       $(document).ready(function () {
+            //$(selector).load(URL,data,callback);
+           //console.log(@Html.Raw(Json.Serialize(ViewData["MONUMENTS"])))
+            $("#mapid").load("/Index/Monument", function () {
+                var latitud = [];
+                var longitud = [];
+
+                if (@Html.Raw(Json.Serialize(ViewData["MONUMENTS"])) != null) {
+                    var lista = @Html.Raw(Json.Serialize(ViewData["MONUMENTS"]));
+                } else {
+                    var lista = [];
+                }
+
+                for (var i = 0; i < lista.length; i++){
+                    var obj = lista[i];
+                    for (var prop in obj) {
+                        if (prop == "latitud") {
+                            if (obj[prop] != null)
+                            {
+                                latitud.push(parseFloat(obj[prop]));
+                            }                            
+                        }
+                        if (prop == "longitud") {
+                            if (obj[prop] != null)
+                            {
+                                longitud.push(parseFloat(obj[prop]));
+                            }                             
+                        }
+                    }
+                }
+                //console.log(latitud)
+                //console.log(longitud)
+
+
+                var maxLat = Math.max.apply(Math,latitud);
+                var minLat = Math.min.apply(Math, latitud);
+                var maxLong = Math.max.apply(Math, longitud);
+                var minLong = Math.min.apply(Math, longitud);
+
+                var mymap = L.map('mapid').setView([maxLat, minLong], 13);
+                for (var i = 0; i < lista.length; i++){
+                    var obj = lista[i];
+                    var lat = 0;
+                    var long = 0;
+                    var monumentos = "Descripcion";
+                    var nombre = "";
+
+                    for (var prop in obj) {
+                        var estado = false;
+                        if (prop == "latitud") {
+                            if (obj[prop] != null)
+                            {
+                                latitud.push(parseFloat(obj[prop]));
+                                lat = parseFloat(obj[prop]);
+                                estado = true;
+                            }                            
+                        }
+                        if (prop == "longitud") {
+                            if (obj[prop] != null)
+                            {
+                                longitud.push(parseFloat(obj[prop]));
+                                long = parseFloat(obj[prop]);
+                                estado = true;
+                            }
+                        }
+                        if (prop == "nombreMonu" ) {
+                             nombre= obj[prop];
+                        }
+                    }
+
+                    //console.log(lat)
+                    console.log(long)
+                    console.log(nombre)
+
+
+                    var marker = L.marker([lat, long]).addTo(mymap);
+
+                    var circle = L.circle([lat, long], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: 500
+                    }).addTo(mymap);
+
+                    marker.bindPopup("<strong style='font-size:15px; text-align:center'>"
+                        + nombre + "</strong>" + "<br>" + monumentos).openPopup();
+
+                        //circle.bindPopup("I am a circle.");
+                        //polygon.bindPopup("I am a polygon.");
+
+                    var popup = L.popup()
+                        .setLatLng([lat, long])
+                        .setContent(nombre).setContent(monumentos)
+                        .openOn(mymap);
+                }
+
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                subdomains: ['a', 'b', 'c']
+            }).addTo(mymap);
+            });
+       });
+</script>
+
+}
+
+
+<h1>Index</h1>
+<form asp-controller="Monument" asp-action="Index" method="post">
+    <label>País:</label>
+    <select name="siglas">
+
+        @foreach (Country pais in paises)
+        {
+            if (paisSelect != null && paisSelect.Siglas == pais.Siglas)
+            {
+                <option value="@pais.Siglas" selected>@pais.NombrePais</option>
+            }
+            else
+            {
+                <option value="@pais.Siglas">@pais.NombrePais</option>
+
+            }
+        }
+
+    </select>
+    <button type="submit" class="btn btn-success">Buscar</button>
+</form>
+
+<h2>VerMapa</h2>
+
+<div style="text-align:center">
+    <div id="mapid" style="width: 1000px; height: 600px;
+    background-color:pink; margin:auto ">
+
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Siglas
+                </th>
+                <th>
+                    NombreMonu
+                </th>
+                <th>
+                    Latitud
+                </th>
+                <th>
+                    Longitud
+                </th>
+                <th>
+                    Image
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Monument monu in Model)
+            {
+                <tr>
+                    <td>
+                        @monu.Id
+                    </td>
+                    <td>
+                        @monu.Siglas
+                    </td>
+                    <td>
+                        @monu.NombreMonu
+                    </td>
+                    <td>
+                        @monu.Latitud
+                    </td>
+                    <td>
+                        @monu.Longitud
+                    </td>
+                    <td>
+                        @monu.Image
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
