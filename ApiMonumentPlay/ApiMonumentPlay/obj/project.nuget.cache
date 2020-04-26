@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I6GE8cy6IEx6T4PqpBa6WpF/zls79zpSbmWcjKiR73E/VOX9wnYMgFPijm6P1T+K3Aaklzj3lZaQ2b01A2Iwzw==",
+  "dgSpecHash": "r49XHExhz9CRUaMs7SQ84+Huqexf+NUSxpxFlgTpTvK/XbHVNUrf2AKCSQWwiLqsToqq36p7ivs1554VdXBBjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
+  "projectFilePath": "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sarab\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.3\\microsoft.aspnetcore.authentication.jwtbearer.3.1.3.nupkg.sha512",
     "C:\\Users\\sarab\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

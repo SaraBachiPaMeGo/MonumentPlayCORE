@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj": {}
+    "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj": {
+    "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
+        "projectUniqueName": "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
         "projectName": "ApiMonumentPlay",
-        "projectPath": "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
+        "projectPath": "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\ApiMonumentPlay.csproj",
         "packagesPath": "C:\\Users\\sarab\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sarab\\source\\repos\\ApiMonumentPlay\\ApiMonumentPlay\\obj\\",
+        "outputPath": "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ApiMonumentPlay\\ApiMonumentPlay\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sarab\\AppData\\Roaming\\NuGet\\NuGet.Config",
