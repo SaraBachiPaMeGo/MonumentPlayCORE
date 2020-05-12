@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ClientePracticaMonedasSBP.Models
+namespace ClienteMonument.Models
 {
     public class LogIn
     {

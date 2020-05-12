@@ -2,19 +2,41 @@
 @{
     ViewData["Title"] = "Login";
 }
+<hr />
+<h2 style="margin-left:40%">Log In</h2>
 
-<h1>Login</h1>
-
-<form method="post">
-    <label>
-        Nickname:
-    </label>
-    <input type="text" class="form-control" name="nickname" />
-    <label>
-        Password:
-    </label>
-    <input type="text" class="form-control" name="password" />
-    <button type="submit" class="btn btn-success">Log in</button>
-</form>
+<div class="ml-auto" data-aos="fade-up" data-aos-delay="200" style="margin-left:50%">
+    <div style="background-color:#e6e2d3">
+        <div style="margin-left:40%">
+            <form method="post">
+                <fieldset>
+                    <label>NickName:</label>
+                    <input type="text" name="nickname" class="form-control" style="width: 50%" />
+                    <label>Password:</label>
+                    <input type="text" name="password" class="form-control" style="width: 50%"/>
+                </fieldset>
+                <br />
+                <button type="submit" class="btn btn-primary text-white px-4">Log In</button>
+            </form>
+            <br />
+        </div>
+    </div>
+</div>
 
 <h1>@ViewData["Mensaje"]</h1>
+
+
+
+{@*<h1>Login</h1>
+
+    <form method="post">
+        <label>
+            Nickname:
+        </label>
+        <input type="text" class="form-control" name="nickname" />
+        <label>
+            Password:
+        </label>
+        <input type="text" class="form-control" name="password" />
+        <button type="submit" class="btn btn-success">Log in</button>
+    </form>*@}

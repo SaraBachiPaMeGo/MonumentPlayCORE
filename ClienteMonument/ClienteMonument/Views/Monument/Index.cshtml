@@ -5,15 +5,15 @@
 }
 
 @{
-    //List<Monument> monumentos = ViewData["MONUMENT"] as List<Monument>;
     List<Country> paises = ViewData["PAIS"] as List<Country>;
     Country paisSelect = ViewData["valor"] as Country;
     List<Monument> listaMonumentos = ViewData["MONUMENTS"] as List<Monument>;
+    String continente = ViewData["CONTINENTE"] as String;
 }
 
 @section Scripts {
-<script src="~/js/leaflet.js"></script>
-<script>
+    <script src="~/js/leaflet.js"></script>
+    <script>
        $(document).ready(function () {
             //$(selector).load(URL,data,callback);
            //console.log(@Html.Raw(Json.Serialize(ViewData["MONUMENTS"])))
@@ -34,13 +34,13 @@
                             if (obj[prop] != null)
                             {
                                 latitud.push(parseFloat(obj[prop]));
-                            }                            
+                            }
                         }
                         if (prop == "longitud") {
                             if (obj[prop] != null)
                             {
                                 longitud.push(parseFloat(obj[prop]));
-                            }                             
+                            }
                         }
                     }
                 }
@@ -69,7 +69,7 @@
                                 latitud.push(parseFloat(obj[prop]));
                                 lat = parseFloat(obj[prop]);
                                 estado = true;
-                            }                            
+                            }
                         }
                         if (prop == "longitud") {
                             if (obj[prop] != null)
@@ -116,95 +116,52 @@
             }).addTo(mymap);
             });
        });
-</script>
+    </script>
 
 }
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <div class="form-group d-flex">
+                <form asp-controller="Monument" asp-action="Index" method="post">
+                    <label>País:</label>
+                    <select name="siglas">
 
+                        @foreach (Country pais in paises)
+                        {
+                            if (paisSelect != null && paisSelect.Siglas == pais.Siglas)
+                            {
+                                <option value="@pais.Siglas" selected>@pais.NombrePais</option>
+                            }
+                            else
+                            {
+                                <option value="@pais.Siglas">@pais.NombrePais</option>
 
-<h1>Index</h1>
-<form asp-controller="Monument" asp-action="Index" method="post">
-    <label>País:</label>
-    <select name="siglas">
+                            }
+                        }
 
-        @foreach (Country pais in paises)
-        {
-            if (paisSelect != null && paisSelect.Siglas == pais.Siglas)
-            {
-                <option value="@pais.Siglas" selected>@pais.NombrePais</option>
-            }
-            else
-            {
-                <option value="@pais.Siglas">@pais.NombrePais</option>
-
-            }
-        }
-
-    </select>
-    <button type="submit" class="btn btn-success">Buscar</button>
-</form>
-
-<h2>VerMapa</h2>
-
-<div style="text-align:center">
-    <div id="mapid" style="width: 1000px; height: 600px;
-    background-color:pink; margin:auto ">
-
+                    </select>
+                    <button type="submit" class="btn btn-primary text-white px-4">Buscar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
-@if (Model != null)
+@if (listaMonumentos != null)
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Siglas
-                </th>
-                <th>
-                    NombreMonu
-                </th>
-                <th>
-                    Latitud
-                </th>
-                <th>
-                    Longitud
-                </th>
-                <th>
-                    Image
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Monument monu in Model)
-            {
-                <tr>
-                    <td>
-                        @monu.Id
-                    </td>
-                    <td>
-                        @monu.Siglas
-                    </td>
-                    <td>
-                        @monu.NombreMonu
-                    </td>
-                    <td>
-                        @monu.Latitud
-                    </td>
-                    <td>
-                        @monu.Longitud
-                    </td>
-                    <td>
-                        @monu.Image
-                    </td>
+    <div style="text-align:center">
+        <div id="mapid" style="width: 1000px; height: 600px;
+    background-color:pink; margin:auto; display:block" >
 
-                </tr>
-            }
-        </tbody>
-    </table>
+        </div>
+    </div>
+}@*else
+{
+<h1>No se encontraron resultados para ésta localización</h1>
+}*@
 
-}
+<h1 style="margin-left:10%;margin-right:10%; text-align:center">@ViewData["MenError"]</h1>
+
 
 

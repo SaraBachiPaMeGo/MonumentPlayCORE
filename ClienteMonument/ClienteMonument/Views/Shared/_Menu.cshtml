@@ -1,0 +1,38 @@
+﻿@using ClienteMonument.Models
+@using System.Security.Claims;
+
+@{
+    String username = Context.User.Claims.SingleOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+
+}
+@if (username != null)
+{
+    <li>
+        <a class="btn btn-primary text-white" asp-area="" asp-controller="Monument" asp-action="MiPerfil"
+           style="padding-left: 2px 0px;!important">Mi Perfil</a>
+
+        @*@Html.ActionLink("Log in", "MiPerfil", "Manage", new
+             {
+                 @class = "btn btn-primary text-white ",
+            @style = "padding-left: 2px 0px;!important"
+             })*@
+    </li>
+    <li>
+        <a class="btn btn-danger text-white px-4" asp-area="" asp-controller="Monument"
+           asp-action="CerrarSesion"
+           style="padding:6%">Cerrar Sesion</a>
+
+        @*@Html.ActionLink("Cerrar Sesión", "CerrarSesion", "Manage", null, new { @class = "btn btn-danger text-white px-4", @style = "padding:6%" })*@
+    </li>
+    <h2 style="font-size:large; margin-top:2%; margin-right:2%">@username</h2>
+}
+else
+{
+    <li>
+        <a class="btn btn-primary text-white px-4" asp-area="" asp-controller="Monument" asp-action="Registro"
+           style="padding:6%">Registro</a>
+
+        @*@Html.ActionLink("Registrarse", "NewUser", "Manage", new { @class = "btn btn-primary text-white px-4", @style = "padding:6%" })*@
+    </li>
+
+}

@@ -13,9 +13,13 @@
         "packagesPath": "C:\\Users\\sarab\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\sarab\\source\\repos\\MonumentPlayCORE\\ClienteMonument\\ClienteMonument\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
           "C:\\Users\\sarab\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -38,6 +42,18 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "JavaScriptEngineSwitcher.Extensions.MsDependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "JavaScriptEngineSwitcher.V8": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
+            "JavaScriptEngineSwitcher.V8.Native.win-x64": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
               "version": "[5.2.7, )"
@@ -48,7 +64,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.2, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -57,6 +73,10 @@
             "NuggetMonument": {
               "target": "Package",
               "version": "[1.0.0, )"
+            },
+            "React.AspNet": {
+              "target": "Package",
+              "version": "[5.2.4, )"
             }
           },
           "imports": [

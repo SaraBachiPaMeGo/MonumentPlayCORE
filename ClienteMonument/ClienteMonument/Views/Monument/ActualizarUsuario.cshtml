@@ -3,49 +3,43 @@
 @{
     ViewData["Title"] = "ActualizarUsuario";
 }
+@{
+    Usuario user = ViewData["USER"] as Usuario;
+}
 
-<h1>ActualizarUsuario</h1>
-
-<h4>Usuario</h4>
+<h1 style="margin-left:40%">ActualizarUsuario</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ActualizarUsuario">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdUser" class="control-label"></label>
-                <input asp-for="IdUser" class="form-control" readonly/>
-                <span asp-validation-for="IdUser" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NombreUs" class="control-label"></label>
-                <input asp-for="NombreUs" class="form-control" />
-                <span asp-validation-for="NombreUs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NickName" class="control-label"></label>
-                <input asp-for="NickName" class="form-control" />
-                <span asp-validation-for="NickName" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Salt" class="control-label"></label>
-                <input asp-for="Salt" class="form-control" />
-                <span asp-validation-for="Salt" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="ml-auto" data-aos="fade-up" data-aos-delay="200" style="margin-left:50%">
+    <div style="background-color:#e6e2d3">
+        <div style="margin-left:40%">
+            <form asp-action="ActualizarUsuario">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" style="display:none">
+                    <label asp-for="IdUser" class="control-label"></label>
+                    <input asp-for="@user.IdUser" class="form-control" style="width: 50%" />
+                    <span asp-validation-for="IdUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombreUs" class="control-label"></label>
+                    <input asp-for="@user.NombreUs" class="form-control" style="width: 50%"/>
+                    <span asp-validation-for="NombreUs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="@user.Email" class="form-control" style="width: 50%" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NickName" class="control-label"></label>
+                    <input asp-for="@user.NickName" class="form-control" style="width: 50%" />
+                    <span asp-validation-for="NickName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-primary text-white px-4" />
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

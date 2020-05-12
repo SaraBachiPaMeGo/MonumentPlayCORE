@@ -1,5 +1,4 @@
 ﻿using ClienteMonument.Models;
-using ClientePracticaMonedasSBP.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -31,12 +30,12 @@ namespace ClienteMonument.Repositories
             this.header = new MediaTypeWithQualityHeaderValue("application/json");
         }
 
-        public async Task<String> GetToken(String nickname, String password)//, int id) // VALIDAR
+        public async Task<String> GetToken(String nickname, String password) // VALIDAR
         {
-            String url2 = "https://apimonumentplay.azurewebsites.net";
+            //String url2 = "https://apimonumentplay.azurewebsites.net";
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(url2);
+                client.BaseAddress = new Uri(url);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(header);
 
@@ -66,13 +65,6 @@ namespace ClienteMonument.Repositories
                 }
             }
         }
-
-        //public async Task<Usuario> ValidarUsuario(String nickname, String password)
-        //{            
-        //   String request = "/api/Usuario/ValidarUsuario";                
-        //    Usuario user = await this.CallApiNoTOKEN<Usuario>(request);
-        //    return user;
-        //}
 
         private async Task<T> CallApi<T>(String request, String token)
         {
@@ -122,7 +114,7 @@ namespace ClienteMonument.Repositories
                 }
             }
         }
-        private async Task CallApiPut<T>(String request, String token, T putObject)
+        private async Task CallApiPut<T>(String request, String token, T user)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -132,7 +124,7 @@ namespace ClienteMonument.Repositories
                 client.DefaultRequestHeaders.Add("Authorization",
                     "bearer " + token);
 
-                String json = JsonConvert.SerializeObject(putObject);
+                String json = JsonConvert.SerializeObject(user);
 
                 StringContent content =
                     new StringContent(json, Encoding.UTF8,
@@ -144,7 +136,7 @@ namespace ClienteMonument.Repositories
             }
         }
 
-        private async Task CallApiPost<T>(String request, T postObject)
+        private async Task CallApiPost<T>(String request, T user)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -152,7 +144,7 @@ namespace ClienteMonument.Repositories
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(header);
 
-                String json = JsonConvert.SerializeObject(postObject);
+                String json = JsonConvert.SerializeObject(user);
 
                 StringContent content =
                     new StringContent(json, Encoding.UTF8,
@@ -234,11 +226,18 @@ namespace ClienteMonument.Repositories
                 if (response.IsSuccessStatusCode)
                 {
                     String data = await response.Content.ReadAsStringAsync();
-                    MonumentosList lista =
-                        JsonConvert.DeserializeObject<MonumentosList>(data);
-                    List<Monument> monuments = lista.Monumentos;
+                    if (data !="[]")
+                    {
+                        MonumentosList lista =
+                           JsonConvert.DeserializeObject<MonumentosList>(data);
+                        List<Monument> monuments = lista.Monumentos;
 
-                    return monuments;
+                        return monuments;
+                    }
+                    else {
+                        return null;
+                    }
+                   
                 }
                 else
                 {
@@ -304,6 +303,6 @@ namespace ClienteMonument.Repositories
                 };
             String request = "/api/Usuario/";
             await this.CallApiPost<Usuario>(request, user);// token,
-        }
+        }            
     }
 }

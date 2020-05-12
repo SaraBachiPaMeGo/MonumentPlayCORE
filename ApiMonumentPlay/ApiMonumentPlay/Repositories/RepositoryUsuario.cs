@@ -29,10 +29,6 @@ namespace ApiMonumentPlay.Repositories
 
         public Usuario ValidarUsuario(String nickname, String password) //Existe
         {
-            //var consulta = from datos in context.Usuario
-            //               where datos.NickName == nickname
-            //               select datos;
-
             Usuario user = this.context.Usuario.SingleOrDefault(z => z.NickName == nickname);
 
             if (user != null)

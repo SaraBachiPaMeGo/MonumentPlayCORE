@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewData["Title"] = "MapaMundi";
+}
+@{
+    List<Data> datos = ViewData["Contient"] as List<Data>;
+}
+
+@section Scripts{ 
+
+    <script>
+        //var url = "https://clientemonument.azurewebsites.net/";//continente/{continente} ";
+        //$(document).ready(function () {
+
+        //    //console.log(@datos.Count);
+
+            //if (@Html.Raw(Json.Serialize(ViewData["Contient"])) != null) {
+            //    //var lista = @Html.Raw(Json.Serialize(ViewData["Contient"] as List<Data>));
+                //console.log(@datos.Count);
+                //for (var i = 0; i < lista.length; i++) {
+                //    console.log("Botón " + i);
+                //    console.log(lista[i].name);
+
+                //    $("#btn-" + i).click(function () {
+                //        //var dato = $("#btn-" + i).attr('id');
+                //        //var dato = document.getElementById("#btn-" + i).getAttribute('data-name');
+                //        console.log($(this).data("name"));
+
+                //        $.ajax({
+                //            url: url + $(this).data("name"),
+                //            type: "GET",
+                //            success: function (data) {
+                //                console.log("cargando...")
+                //                var html = "";
+                //                $.each(data, function (i, plan) {
+                //                    html += "<ul>";
+                //                    html += "<li>" + plan.apellido + "</li>";
+                //                    html += "<li>" + plan.funcion + "</li>";
+                //                    html += "<li>" + plan.turno + "</li>";
+                //                    html += "<li>" + plan.salario + "</li>";
+                //                    html += "</ul>";
+                //                })
+                //                $("#funciones").html(html);
+                //            }
+                //        });
+
+        //        //         @*<a asp-action="Index"
+                             asp-route-siglas="@sigla"
+                             asp-controller="Monument"></a>*@
+        //            })
+        //        };
+        //    }
+        //});
+    </script>
+}
+<style>
+    div.esfera {
+        /*display:block;
+        width: 100%;
+        height: 550%;
+        background-color: coral;
+        background: radial-gradient(at top left, #0F0 20%, #040);
+        -ms-border-radius: 150px;
+        -moz-border-radius: 150px;
+        -webkit-border-radius: 150px;
+        -o-border-radius: 150px;
+        border-radius: 150px;
+        margin: 0px auto;*/
+        padding:2%;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        /*background-color: #2196F3;*/
+        /*padding: 10px;*/
+        align-content: center;
+        /*width: 750px;
+        height: 700px;*/
+        margin: auto;
+        background-color: #e6f7ff;
+        /*background: radial-gradient(at top left, #0F0 20%, #040);*/
+        -ms-border-radius: 150px;
+        -moz-border-radius: 150px;
+        -webkit-border-radius: 150px;
+        -o-border-radius: 150px;
+        border-radius: 150px;
+        padding: 2%;
+    }
+
+    /*.grid-item {
+        grid-row-start: 1;
+            grid-row-start: 3;
+        grid-row: 1 / 4;
+    }*/
+
+    .item1 {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        /*grid-row: 1 / 3;*/
+        
+    }
+
+    .grid-item {
+        /*background-color: #e6f7ff;*/
+        /*background-color: #2196F3;*/
+        /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+        /*padding: 20px;*/
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .grid-item:hover {
+        /*color: #00d9ff;*/
+        transform-origin: center;
+        transform: scale(1.2);
+        /*box-shadow: 1px 1px 2px white, 0 0 25px white, 0 0 5px white;*/
+    }
+
+    .grid-item a {
+        /*transition-property: "color";*/
+        transition-duration: 0.5s;
+        transition-timing-function: linear;
+    }
+
+</style>
+<br />
+
+<h1 style="margin-left:10%;margin-right:10%; text-align:center">¿Qué lugar del mundo te gustaría descubrir?</h1>
+
+<div class="esfera">    
+    <div class="grid-container" style="margin:auto;">
+        @foreach (Data cont in datos)
+        @*@for (int i = 0; i >= datos.Count; i++)*@
+        {
+            {
+                if (cont.Foto != null)
+                {
+                    if (cont.Name == "Asia" || cont.Name == "Oceania")
+                    {
+                        //<button type="button" >
+                        <div class="grid-item" style="padding:5px" id="btn-@cont.Id" data-name="@cont.Name">
+                            <a asp-action="Index"
+                               asp-route-continente="@cont.Name"
+                               asp-controller="Monument">
+                                <img src="@cont.Foto" style="width:300px; height:250px" />
+                            </a>
+                        </div>
+                        //</button>
+                    }
+                    else if (cont.Name == "Americas")
+                    { 
+                        <div class="grid-item item1" style="padding:5px" id="btn-@cont.Id" data-name="@cont.Name">
+                            <a asp-action="Index"
+                               asp-route-continente="@cont.Name"
+                               asp-controller="Monument">
+                                <img src="@cont.Foto" style="width:300px; height: 490px;" />
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        //<button type="button" id="btn" name="@cont.Name">
+                        <div class="grid-item" style="padding:5px" id="btn-@cont.Id" data-name="@cont.Name">
+                            <a asp-action="Index"
+                             asp-route-continente="@cont.Name"
+                             asp-controller="Monument">
+                                <img src="@cont.Foto" style="width:250px; height:250px" />
+                            </a>
+                        </div>
+                        //</button>
+                    }
+                }
+            }
+        }
+
+    </div>
+</div>

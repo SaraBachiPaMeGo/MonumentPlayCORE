@@ -4,52 +4,89 @@
     ViewData["Title"] = "Registro";
 }
 
-<h1>Registro</h1>
-
-<h4>Usuario</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Registro">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="IdUser" class="control-label"></label>
-                <input asp-for="IdUser" class="form-control" />
-                <span asp-validation-for="IdUser" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="NombreUs" class="control-label"></label>
-                <input asp-for="NombreUs" class="form-control" />
-                <span asp-validation-for="NombreUs" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NickName" class="control-label"></label>
-                <input asp-for="NickName" class="form-control" />
-                <span asp-validation-for="NickName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Salt" class="control-label"></label>
-                <input asp-for="Salt" class="form-control" />
-                <span asp-validation-for="Salt" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<h2 style="margin-left:40%">Registro</h2>
+
+<div class="ml-auto" data-aos="fade-up" data-aos-delay="200" style="margin-left:50%">
+    <div style="background-color:#e6e2d3">
+        <div style="margin-left:40%">
+            <form method="post" asp-action="Registro">
+                <fieldset>
+
+                    <label class="control-label">Nombre:</label>
+                    <input asp-for="NombreUs" class="form-control" style="width: 50%" />
+                    <span asp-validation-for="NombreUs" class="text-danger"></span>
+
+                    @*<input name="nombreUs" class="form-control" />*@
+                    <label class="control-label">NickName:</label>
+                    <input asp-for="NickName" class="form-control" style="width: 50%"/>
+                    <span asp-validation-for="NickName" class="text-danger"></span>
+
+                    <label class="control-label">Email:</label>
+                    <input asp-for="Email" class="form-control" style="width: 50%"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <label class="control-label">Password:</label>
+                    <input asp-for="Password" class="form-control" style="width: 50%"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </fieldset>
+                <br />
+                <button type="submit" class="btn btn-primary text-white px-4">Registrarse</button>
+            </form>
+            <br />
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+
+{
+@*<hr />*@
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Registro">*@
+
+@*<div class="form-group">
+        <label asp-for="IdUser" class="control-label"></label>
+        <input asp-for="IdUser" class="form-control" />
+        <span asp-validation-for="IdUser" class="text-danger"></span>
+    </div>*@
+@*<div class="form-group">
+        <label asp-for="NombreUs" class="control-label"></label>
+        <input asp-for="NombreUs" class="form-control" />
+        <span asp-validation-for="NombreUs" class="text-danger"></span>
+    </div>*@
+@*<div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>*@
+@*<div class="form-group">
+        <label asp-for="NickName" class="control-label"></label>
+        <input asp-for="NickName" class="form-control" />
+        <span asp-validation-for="NickName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>*@
+@*<div class="form-group">
+        <label asp-for="Salt" class="control-label"></label>
+        <input asp-for="Salt" class="form-control" />
+        <span asp-validation-for="Salt" class="text-danger"></span>
+    </div>*@
+@*<div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>*@
+@*</form>
+        </div>
+    </div>*@
+
+@*<div>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+
+}

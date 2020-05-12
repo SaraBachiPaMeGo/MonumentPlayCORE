@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ApiMonumentPlay.Repositories;
 using ApiMonumentPlay.Token;
-using ApiPracticaMonedasSBP.Models;
+using ApiMonumentPlay.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

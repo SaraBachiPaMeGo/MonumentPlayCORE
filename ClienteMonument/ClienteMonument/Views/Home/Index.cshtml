@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="ftco-blocks-cover-1">
+    <div class="ftco-cover-1 overlay" style="background-image: url('https://i.pinimg.com/originals/58/46/58/5846587308c7ebad164efd5b1c462acb.jpg')">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1>Elige tu destino:</h1>
+                    <p class="mb-5" style="margin-bottom:2%!important">Busca de entre más de 10.000 ciudades para descubrir los lugares más maravillosos</p>
+                    @*<form method="post">*@
+                    <div class="form-group d-flex">
+                        @*<input class="form-control" type="text"
+                            id="ciudad" name="ciudad"
+                            placeholder="Introduce una ciudad" />*@
+                        @*<input type="submit" class="btn btn-primary text-white px-4" value="Buscar">*@
+                        <a class="btn btn-primary text-white px-4" asp-area=""
+                           asp-controller="Monument" asp-action="MapaMundi"
+                        >Empezar</a>
+                    </div>
+                    @*</form>*@
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
